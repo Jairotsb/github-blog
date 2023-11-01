@@ -57,4 +57,8 @@ export const GithubLink = styled.a`
   font-size: ${(props) => props.theme.fontSize.small};
   text-decoration: none;
   cursor: pointer;
+
+  svg {
+    padding-left: 0.6rem;
+  }
 `

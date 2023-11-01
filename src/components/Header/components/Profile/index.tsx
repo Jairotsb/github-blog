@@ -39,7 +39,7 @@ export function Profile() {
         <ProfileHeader>
           <ProfileName>Jairo Tunisse</ProfileName>
           <GithubLink href="https://www.github.com/Jairotsb" target="_blank">
-            GITHUB{' '}
+            GITHUB
             <FontAwesomeIcon icon={['fas', 'arrow-up-right-from-square']} />
           </GithubLink>
         </ProfileHeader>
