@@ -47,7 +47,6 @@ export function Profile() {
 
   async function fetchUser() {
     const response = await api.get('')
-    console.log(response.data)
     setUser(response.data)
   }
   useEffect(() => {

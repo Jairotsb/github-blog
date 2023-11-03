@@ -29,11 +29,11 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const PostListContainer = styled.main`
-  width: 100%;
   display: flex;
   padding: 4rem 0;
   justify-content: center;
-  margin-top: 2rem;
+  align-items: center;
+  margin: 2rem auto;
 
   @media (max-width: 480px) {
     align-items: center;
@@ -41,9 +41,9 @@ export const PostListContainer = styled.main`
 `
 export const PostListCard = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 0.8fr);
 
   @media (max-width: 480px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: reepeat(1);
   }
 `

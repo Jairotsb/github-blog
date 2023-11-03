@@ -1,12 +1,19 @@
 import styled from 'styled-components'
 
 export const PostCardContainer = styled.div`
-  width: 26rem;
+  width: 29rem;
   height: 16.2rem;
 
   border-radius: 10px;
   background-color: ${(props) => props.theme['base-post']};
   margin: 0 2rem 1.8rem 2rem;
+  transition: all 0.6s;
+  border: 1px solid transparent;
+  padding: 0.5rem;
+
+  &:hover {
+    border: 2px solid ${(props) => props.theme['base-label']};
+  }
 `
 
 export const PostCardContent = styled.div`
@@ -25,7 +32,7 @@ export const PostCardTitle = styled.h3`
 `
 
 export const PostCardTime = styled.span`
-  width: 5rem;
+  width: auto;
   margin-right: 2rem;
   font-size: ${(props) => props.theme.fontSize.small};
   color: ${(props) => props.theme['base-span']};
