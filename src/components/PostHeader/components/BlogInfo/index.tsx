@@ -14,6 +14,7 @@ import {
   faComment,
   faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 library.add(faCalendar, faComment, faChevronLeft)
 
@@ -23,12 +24,20 @@ export function BlogInfo() {
       <BlogInfoContent>
         <BlogInfoAction>
           <BlogLink>
-            <FontAwesomeIcon icon={['fas', 'chevron-left']} />
-            Voltar
+            <Link to="/">
+              <FontAwesomeIcon icon={['fas', 'chevron-left']} />
+              Voltar
+            </Link>
           </BlogLink>
           <BlogLink>
-            Github
-            <FontAwesomeIcon icon={['fas', 'arrow-up-right-from-square']} />
+            <a
+              href="https://github.com/Jairotsb"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Github
+              <FontAwesomeIcon icon={['fas', 'arrow-up-right-from-square']} />
+            </a>
           </BlogLink>
         </BlogInfoAction>
         <BlogTitle>JavaScript data types and data structures</BlogTitle>

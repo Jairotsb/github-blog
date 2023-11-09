@@ -18,6 +18,11 @@ export const BlogLink = styled(HeaderLink)`
       margin-right: 0.5rem;
     }
   }
+
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.blue};
+  }
 `
 
 export const BlogTitle = styled(HeaderName)`
