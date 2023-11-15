@@ -1,39 +1,28 @@
 // import Markdown from 'react-markdown'
-import Markdown from 'react-markdown'
-import { Cover } from '../Header/components/Cover'
-import { HeaderContainer } from '../Header/styles'
-import { BlogInfo } from './components/BlogInfo'
-import { PostHeaderContent } from './styles'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import Markdown from "react-markdown";
+import { useContextSelector } from 'use-context-selector'
+import { Cover } from "../Header/components/Cover";
+import { HeaderContainer } from "../Header/styles";
+import { BlogInfo } from "./components/BlogInfo";
+import { PostHeaderContent } from "./styles";
+import { GithubContext } from "../../contexts/GithubContext";
+import { PostCardProps } from "../../types";
 
-export function PostHeader() {
-  const [post, setPost] = useState('')
 
-  useEffect(() => {
-    const loadMarkdown = async () => {
-      try {
-        const response = await axios.get(
-          'https://api.github.com/repos/Jairotsb/github-blog/issues/1',
-        )
+interface PostHeaderProps {
+  content: PostCardProps;
+}
 
-        setPost(response.data.body)
-      } catch (error) {
-        console.error('erro: ', error)
-      }
-    }
-
-    loadMarkdown()
-  }, [])
-
+export function PostHeader({ content }: PostHeaderProps) { 
+  
   return (
     <HeaderContainer>
       <Cover />
-      <BlogInfo />
+      <BlogInfo title={content.title} author={'Jairotsb'} comments={content.comments} created_at={content.created_at}/>
 
       <PostHeaderContent>
-        <Markdown>{post}</Markdown>
+        <Markdown>{content.body}</Markdown>
       </PostHeaderContent>
     </HeaderContainer>
-  )
+  );
 }

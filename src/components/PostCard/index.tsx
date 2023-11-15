@@ -12,10 +12,14 @@ import {
 } from './styles'
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { Link } from 'react-router-dom'
+import { useContextSelector } from 'use-context-selector'
+import { GithubContext } from '../../contexts/GithubContext'
 
-export function PostCard({ title, body, created_at }: PostCardProps) {
+export function PostCard({ title, body, created_at, number }: PostCardProps) {
   const [description, setDescription] = useState('')
 
+    
   function getDescription(text: string) {
     const firstPhrase = text.split(/[.!?]/)
 
@@ -31,8 +35,10 @@ export function PostCard({ title, body, created_at }: PostCardProps) {
     getDescription(body)
   }, [body])
 
+
   return (
     <PostCardContainer>
+      <Link to={`/content/${number}`}>
       <PostCardContent>
         <PostCardHeader>
           <PostCardTitle>{title}</PostCardTitle>
@@ -45,6 +51,7 @@ export function PostCard({ title, body, created_at }: PostCardProps) {
         </PostCardHeader>
         <PostCardDescription>{description}</PostCardDescription>
       </PostCardContent>
+    </Link>
     </PostCardContainer>
   )
 }

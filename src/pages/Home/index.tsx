@@ -1,22 +1,16 @@
-import { useEffect, useState } from 'react'
 import { Header } from '../../components/Header'
 import { SearchForm } from '../../components/SearchForm'
-import { PostCardProps } from '../../types'
+
 import { PostListCard, PostListContainer } from './styles'
-import { issues } from '../../api'
 import { PostCard } from '../../components/PostCard'
+import { useContextSelector } from 'use-context-selector'
+import { GithubContext } from '../../contexts/GithubContext'
 
 export function Home() {
-  const [posts, setPosts] = useState<PostCardProps[]>([])
+  const posts = useContextSelector(GithubContext,  (context) => {
+    return context.posts
+  })
 
-  useEffect(() => {
-    async function fetchPosts() {
-      const response = await issues.get('github-blog/issues')
-      console.log(response.data)
-      setPosts(response.data)
-    }
-    fetchPosts()
-  }, [])
   return (
     <>
       <Header />
@@ -28,6 +22,7 @@ export function Home() {
             posts.map((post) => (
               <PostCard
                 key={post.id}
+                number={post.number}
                 title={post.title}
                 body={post.body}
                 created_at={post.created_at}

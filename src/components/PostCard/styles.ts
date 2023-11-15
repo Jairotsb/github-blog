@@ -14,6 +14,10 @@ export const PostCardContainer = styled.div`
   &:hover {
     border: 2px solid ${(props) => props.theme['base-label']};
   }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 export const PostCardContent = styled.div`

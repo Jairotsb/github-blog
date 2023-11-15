@@ -18,7 +18,14 @@ import { Link } from 'react-router-dom'
 
 library.add(faCalendar, faComment, faChevronLeft)
 
-export function BlogInfo() {
+interface BlogInfoProps {
+  title: string
+  author: string
+  comments: number
+  created_at: string
+}
+
+export function BlogInfo({ title, author, comments, created_at }: BlogInfoProps) {
   return (
     <BlogInfoContainer>
       <BlogInfoContent>
@@ -40,18 +47,18 @@ export function BlogInfo() {
             </a>
           </BlogLink>
         </BlogInfoAction>
-        <BlogTitle>JavaScript data types and data structures</BlogTitle>
+        <BlogTitle>{title}</BlogTitle>
         <BlogInfoLinks>
           <BlogInfoDetails>
             <FontAwesomeIcon icon={['fab', 'github']} />
-            Jairotsb
+            {author}
           </BlogInfoDetails>
           <BlogInfoDetails>
             <FontAwesomeIcon icon={['fas', 'calendar']} />
-            Há 7 dias
+            {created_at}
           </BlogInfoDetails>
           <BlogInfoDetails>
-            <FontAwesomeIcon icon={['fas', 'comment']} />5 comentários
+            <FontAwesomeIcon icon={['fas', 'comment']} /> {comments}
           </BlogInfoDetails>
         </BlogInfoLinks>
       </BlogInfoContent>
