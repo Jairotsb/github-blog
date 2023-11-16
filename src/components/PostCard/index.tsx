@@ -13,8 +13,6 @@ import {
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { Link } from 'react-router-dom'
-import { useContextSelector } from 'use-context-selector'
-import { GithubContext } from '../../contexts/GithubContext'
 
 export function PostCard({ title, body, created_at, number }: PostCardProps) {
   const [description, setDescription] = useState('')

@@ -14,7 +14,7 @@ interface PostHeaderProps {
 }
 
 export function PostHeader({ content }: PostHeaderProps) { 
-  
+  //console.log(content.title)
   return (
     <HeaderContainer>
       <Cover />

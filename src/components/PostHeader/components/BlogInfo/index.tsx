@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   BlogInfoAction,
   BlogInfoContainer,
@@ -7,32 +7,41 @@ import {
   BlogInfoLinks,
   BlogLink,
   BlogTitle,
-} from './styles'
-import { library } from '@fortawesome/fontawesome-svg-core'
+} from "./styles";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faCalendar,
   faComment,
   faChevronLeft,
-} from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
-library.add(faCalendar, faComment, faChevronLeft)
+library.add(faCalendar, faComment, faChevronLeft);
 
 interface BlogInfoProps {
-  title: string
-  author: string
-  comments: number
-  created_at: string
+  title: string;
+  author: string;
+  comments: number;
+  created_at: string;
 }
 
-export function BlogInfo({ title, author, comments, created_at }: BlogInfoProps) {
+export function BlogInfo({
+  title,
+  author,
+  comments,
+  created_at,
+}: BlogInfoProps) {
+  console.log("created_at (typeof):", typeof created_at);
+
   return (
     <BlogInfoContainer>
       <BlogInfoContent>
         <BlogInfoAction>
           <BlogLink>
             <Link to="/">
-              <FontAwesomeIcon icon={['fas', 'chevron-left']} />
+              <FontAwesomeIcon icon={["fas", "chevron-left"]} />
               Voltar
             </Link>
           </BlogLink>
@@ -43,25 +52,30 @@ export function BlogInfo({ title, author, comments, created_at }: BlogInfoProps)
               rel="noreferrer"
             >
               Github
-              <FontAwesomeIcon icon={['fas', 'arrow-up-right-from-square']} />
+              <FontAwesomeIcon icon={["fas", "arrow-up-right-from-square"]} />
             </a>
           </BlogLink>
         </BlogInfoAction>
         <BlogTitle>{title}</BlogTitle>
         <BlogInfoLinks>
           <BlogInfoDetails>
-            <FontAwesomeIcon icon={['fab', 'github']} />
+            <FontAwesomeIcon icon={["fab", "github"]} />
             {author}
           </BlogInfoDetails>
           <BlogInfoDetails>
-            <FontAwesomeIcon icon={['fas', 'calendar']} />
-            {created_at}
+            <FontAwesomeIcon icon={["fas", "calendar"]} />
+            {typeof created_at === "string"
+              ? formatDistanceToNow(new Date(created_at), {
+                  addSuffix: true,
+                  locale: ptBR,
+                })
+              : "há muito tempo"}
           </BlogInfoDetails>
           <BlogInfoDetails>
-            <FontAwesomeIcon icon={['fas', 'comment']} /> {comments}
+            <FontAwesomeIcon icon={["fas", "comment"]} /> {comments}
           </BlogInfoDetails>
         </BlogInfoLinks>
       </BlogInfoContent>
     </BlogInfoContainer>
-  )
+  );
 }

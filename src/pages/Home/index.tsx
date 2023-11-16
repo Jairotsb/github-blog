@@ -1,15 +1,15 @@
-import { Header } from '../../components/Header'
-import { SearchForm } from '../../components/SearchForm'
+import { Header } from "../../components/Header";
+import { SearchForm } from "../../components/SearchForm";
 
-import { PostListCard, PostListContainer } from './styles'
-import { PostCard } from '../../components/PostCard'
-import { useContextSelector } from 'use-context-selector'
-import { GithubContext } from '../../contexts/GithubContext'
+import { PostListCard, PostListContainer } from "./styles";
+import { PostCard } from "../../components/PostCard";
+import { useContextSelector } from "use-context-selector";
+import { GithubContext } from "../../contexts/GithubContext";
 
 export function Home() {
-  const posts = useContextSelector(GithubContext,  (context) => {
-    return context.posts
-  })
+  const posts = useContextSelector(GithubContext, (context) => {
+    return context.posts;
+  });
 
   return (
     <>
@@ -26,6 +26,10 @@ export function Home() {
                 title={post.title}
                 body={post.body}
                 created_at={post.created_at}
+                comments={post.comments}
+                user={{
+                  login: post.user.login,
+                }}
               />
             ))
           ) : (
@@ -34,5 +38,5 @@ export function Home() {
         </PostListCard>
       </PostListContainer>
     </>
-  )
+  );
 }
