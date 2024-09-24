@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { PostHeader } from '../../components/PostHeader'
 import { PostContainer } from './styles'
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { issues } from '../../api';
 import { PostCardProps } from '../../types';
 

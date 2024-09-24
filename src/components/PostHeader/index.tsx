@@ -1,11 +1,9 @@
 // import Markdown from 'react-markdown'
 import Markdown from "react-markdown";
-import { useContextSelector } from 'use-context-selector'
 import { Cover } from "../Header/components/Cover";
 import { HeaderContainer } from "../Header/styles";
 import { BlogInfo } from "./components/BlogInfo";
 import { PostHeaderContent } from "./styles";
-import { GithubContext } from "../../contexts/GithubContext";
 import { PostCardProps } from "../../types";
 
 
