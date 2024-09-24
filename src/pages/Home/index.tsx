@@ -10,15 +10,16 @@ export function Home() {
   const posts = useContextSelector(GithubContext, (context) => {
     return context.posts;
   });
+  const searchPosts = useContextSelector(GithubContext, (context) =>  context.searchPosts )
 
   return (
     <>
       <Header />
-      <SearchForm />
+      <SearchForm onSearch={searchPosts}/>
 
       <PostListContainer>
         <PostListCard>
-          {posts ? (
+          {posts.length > 0 ? (
             posts.map((post) => (
               <PostCard
                 key={post.id}

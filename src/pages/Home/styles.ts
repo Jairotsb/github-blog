@@ -18,4 +18,10 @@ export const PostListCard = styled.div`
   @media (max-width: 480px) {
     grid-template-columns: reepeat(1);
   }
+
+  p {
+    min-width:  100%;
+    text-align: center;
+
+  }
 `
